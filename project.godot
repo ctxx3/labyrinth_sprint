@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="D:"
+run/main_scene="res://main_game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+run/max_fps=60
+config/icon="res://assets/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/vsync/vsync_mode=2
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+anti_aliasing/quality/screen_space_aa=1

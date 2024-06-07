@@ -1,3 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717716919
-icon.svg::CompressedTexture2D::5683955996166006401::1717716915::1717716920::1::::<><>::
+::res://::1717718981
+main_game.tscn::PackedScene::3041317086229627851::1717718376::0::1::::<><>::uid://bgkcaas5y1va2::::res://assets/Untitled-1.png<>uid://dwd0cxlhroogl::::res://assets/light.png
+README.md::TextFile::-1::1717717565::0::1::::<><>::
+::res://assets/::1717717794
+icon.svg::CompressedTexture2D::5683955996166006401::1717716915::1717717728::1::::<><>::
+light.png::CompressedTexture2D::8711132466156400559::1717717793::1717717794::1::::<><>::
+Solaria Demo Tiles.png::CompressedTexture2D::8204636457518021564::1717717782::1717717782::1::::<><>::
+Untitled-1.png::CompressedTexture2D::2828318986250086527::1717717748::1717717748::1::::<><>::
+water.png::CompressedTexture2D::1739533834184096699::1717717757::1717717757::1::::<><>::
+::res://shaders/::1717718981
+water.gdshader::Shader::-1::1717718962::0::1::::<><>::

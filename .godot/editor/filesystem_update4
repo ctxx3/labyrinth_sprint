@@ -1,0 +1,5 @@
+res://main_game.tscn
+res://scripts/Player.gd
+res://scripts/MazeGenerator.gd
+res://shaders/water.gdshader
+res://shaders/vignette.gdshader
