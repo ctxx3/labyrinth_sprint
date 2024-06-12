@@ -3,6 +3,10 @@ extends TileMap
 var maze = []
 const width = 22
 const height = 13
+var current_offset_y = 0.0
+
+var boxes = []
+var animatedTile = preload("res://Box.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,13 +25,28 @@ func _unhandled_input(event):
 
 func build_maze():
 	create_maze()
-	for y in range(height):
-		for x in range(width):
+	
+	for x in boxes:
+		remove_child(x)
+	
+	for x in range(width):
+		var to_wait = 0
+		for y in range(height-1, -1, -1):
 			if(maze[y][x] == 1):
-				set_cell(4, Vector2i(x-12, y-5), 0, Vector2(5,10))
-			else:
-				erase_cell(4, Vector2i(x-12, y-5))
+				spawn_box((x-12)*16, (y-5)*16, x+y)
+				#await get_tree().create_timer(0.01).timeout
+				#to_wait += 0.01
+				#set_cell(4, Vector2i(x-12, y-5), 0, Vector2(5,10))
 
+
+func spawn_box(x,y, id):
+	await get_tree().create_timer(id/20.0).timeout
+	var instance = animatedTile.instantiate()
+	boxes.append(instance)
+	instance.position = Vector2(x, y - 16)
+	instance.position = instance.position.snapped(Vector2.ONE * 16) + Vector2.ONE * 16 / 2
+	add_child(instance)
+	instance.start_fall(1.5)
 
 
 func create_maze():

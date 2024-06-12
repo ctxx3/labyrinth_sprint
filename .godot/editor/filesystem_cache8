@@ -1,12 +1,22 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717718981
-main_game.tscn::PackedScene::3041317086229627851::1717718376::0::1::::<><>::uid://bgkcaas5y1va2::::res://assets/Untitled-1.png<>uid://dwd0cxlhroogl::::res://assets/light.png
-README.md::TextFile::-1::1717717565::0::1::::<><>::
-::res://assets/::1717717794
-icon.svg::CompressedTexture2D::5683955996166006401::1717716915::1717717728::1::::<><>::
-light.png::CompressedTexture2D::8711132466156400559::1717717793::1717717794::1::::<><>::
-Solaria Demo Tiles.png::CompressedTexture2D::8204636457518021564::1717717782::1717717782::1::::<><>::
-Untitled-1.png::CompressedTexture2D::2828318986250086527::1717717748::1717717748::1::::<><>::
-water.png::CompressedTexture2D::1739533834184096699::1717717757::1717717757::1::::<><>::
-::res://shaders/::1717718981
-water.gdshader::Shader::-1::1717718962::0::1::::<><>::
+::res://::1718163694
+Box.tscn::PackedScene::2713421651215294715::1718163694::0::1::::<><>::res://scripts/Box.gd<>uid://c2ckmg3i2v51l::::res://assets/box.png
+export_presets.cfg::TextFile::-1::1718141636::0::1::::<><>::
+main_game.tscn::PackedScene::3041317086229627851::1718163694::0::1::::<><>::uid://bgkcaas5y1va2::::res://assets/Untitled-1.png<>uid://do5nftj0tuy2w::::res://assets/Solaria Demo Tiles.png<>uid://dwd0cxlhroogl::::res://assets/light.png<>res://shaders/water.gdshader<>uid://y1v4rr2g1dgt::::res://assets/water.png<>res://scripts/MazeGenerator.gd<>res://scripts/Player.gd<>uid://cxih0rgusaqi8::::res://assets/walk 1 fast.wav<>res://shaders/vignette.gdshader
+README.md::TextFile::-1::1718141636::0::1::::<><>::
+::res://assets/::1718164118
+04B_30__.TTF::FontFile::3305054676454433056::1718164118::1718164118::1::::<><>::
+box.png::CompressedTexture2D::6672697859370769359::1718158324::1718158333::1::::<><>::
+icon.svg::CompressedTexture2D::5683955996166006401::1718141636::1718141758::1::::<><>::
+light.png::CompressedTexture2D::8711132466156400559::1718141636::1718141636::1::::<><>::
+Solaria Demo Tiles.png::CompressedTexture2D::8204636457518021564::1718141636::1718141636::1::::<><>::
+Untitled-1.png::CompressedTexture2D::2828318986250086527::1718141636::1718141636::1::::<><>::
+walk 1 fast.wav::AudioStreamWAV::6404170359988973073::1718163079::1718163148::1::::<><>::
+water.png::CompressedTexture2D::1739533834184096699::1718141636::1718141636::1::::<><>::
+::res://scripts/::1718163646
+Box.gd::GDScript::-1::1718160948::0::1::::<>Area2D<>::
+MazeGenerator.gd::GDScript::-1::1718161791::0::1::::<>TileMap<>::
+Player.gd::GDScript::-1::1718163646::0::1::::<>Area2D<>::
+::res://shaders/::1718163694
+vignette.gdshader::Shader::-1::1718163694::0::1::::<><>::
+water.gdshader::Shader::-1::1718163694::0::1::::<><>::

@@ -1,13 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjlibvtjjyndb"]
+[gd_scene load_steps=36 format=3 uid="uid://bjlibvtjjyndb"]
 
 [ext_resource type="Texture2D" uid="uid://bgkcaas5y1va2" path="res://assets/Untitled-1.png" id="1_2myab"]
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_3sn23"]
 [ext_resource type="Texture2D" uid="uid://do5nftj0tuy2w" path="res://assets/Solaria Demo Tiles.png" id="1_o7wkq"]
 [ext_resource type="Texture2D" uid="uid://dwd0cxlhroogl" path="res://assets/light.png" id="2_38ao0"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="2_mrs0o"]
 [ext_resource type="Texture2D" uid="uid://y1v4rr2g1dgt" path="res://assets/water.png" id="3_51ujm"]
 [ext_resource type="Script" path="res://scripts/MazeGenerator.gd" id="4_2biba"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_pw0y2"]
+[ext_resource type="AudioStream" uid="uid://cxih0rgusaqi8" path="res://assets/walk 1 fast.wav" id="8_qup70"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="8_y6jmt"]
+[ext_resource type="FontFile" uid="uid://bnc81dnt5csno" path="res://assets/04B_30__.TTF" id="10_wrsuy"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7nsnd"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1192,12 +1195,24 @@ size = Vector2(16, 21)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_123r3"]
 shader = ExtResource("8_y6jmt")
-shader_parameter/color = Color(0.165656, 0.165656, 0.165656, 1)
+shader_parameter/color = Color(0.423651, 0.423651, 0.423651, 1)
 shader_parameter/multiplier = 0.3
-shader_parameter/softness = 1.0
+shader_parameter/softness = 1.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sodp1"]
+border_width_left = 1
+border_width_top = 1
+shadow_size = 2
+
+[sub_resource type="Theme" id="Theme_63fnj"]
+default_font = ExtResource("10_wrsuy")
+default_font_size = 28
+/colors/color = Color(0, 0, 0, 1)
+/styles/color = SubResource("StyleBoxFlat_sodp1")
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_3sn23")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -1226,8 +1241,11 @@ z_index = 1
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_4kl7o")
 animation = &"ui_down"
+frame = 1
 
 [node name="RayCast2D" type="RayCast2D" parent="Player"]
+target_position = Vector2(0, 16)
+collide_with_areas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-0.5, 0)
@@ -1236,8 +1254,12 @@ shape = SubResource("RectangleShape2D_xd1ys")
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 energy = 0.3
 shadow_enabled = true
+shadow_filter = 1
 texture = ExtResource("2_38ao0")
 texture_scale = 0.35
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("8_qup70")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 7)
@@ -1252,3 +1274,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 65.0
+offset_bottom = 94.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_63fnj")
+text = "Czas: 00.00"
+
+[node name="Timer" type="Timer" parent="."]

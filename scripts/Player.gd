@@ -13,10 +13,12 @@ const DIRECTIONS = {
 # Onready variables
 @onready var ray_cast: RayCast2D = $RayCast2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 # State variables
 var is_moving = false
 var current_direction = ""
+var audio_cd = 1;
 
 func _ready():
 	position = position.snapped(Vector2.ONE * TILE_SIZE) + Vector2.ONE * TILE_SIZE / 2
@@ -51,6 +53,18 @@ func move(direction):
 			animated_sprite.stop()
 			animated_sprite.frame = 1
 
+func play_sound():
+	audio.play()
+	await get_tree().create_timer(1).timeout
+
 func _process(delta):
 	if current_direction != "" and not is_moving:
 		move(current_direction)
+	if(current_direction != ""):
+			audio_cd -= 0.05
+			if(audio_cd < 0):
+				play_sound()
+				audio_cd = 1
+	else:
+		audio_cd = 0
+

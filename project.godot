@@ -24,5 +24,6 @@ window/vsync/vsync_mode=2
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+lights_and_shadows/use_physical_light_units=true
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
