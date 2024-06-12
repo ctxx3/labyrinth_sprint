@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bnc81dnt5csno"
-path="res://.godot/imported/04B_30__.TTF-9ca1bce5b7698ecdb6ecbe6de100468a.fontdata"
+uid="uid://bpp6mjlce4e77"
+path="res://.godot/imported/Inter-VariableFont_slnt,wght.ttf-27f1a92d2f9faa5999bcf82077382c97.fontdata"
 
 [deps]
 
-source_file="res://assets/04B_30__.TTF"
-dest_files=["res://.godot/imported/04B_30__.TTF-9ca1bce5b7698ecdb6ecbe6de100468a.fontdata"]
+source_file="res://assets/Inter-VariableFont_slnt,wght.ttf"
+dest_files=["res://.godot/imported/Inter-VariableFont_slnt,wght.ttf-27f1a92d2f9faa5999bcf82077382c97.fontdata"]
 
 [params]
 
@@ -27,12 +27,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal at_exit;
+
 # Constants
 const TILE_SIZE = 16
 const ANIMATION_SPEED = 6
@@ -19,6 +21,7 @@ const DIRECTIONS = {
 var is_moving = false
 var current_direction = ""
 var audio_cd = 1;
+var active = false
 
 func _ready():
 	position = position.snapped(Vector2.ONE * TILE_SIZE) + Vector2.ONE * TILE_SIZE / 2
@@ -48,7 +51,10 @@ func move(direction):
 		tween.tween_property(self, "position", position + DIRECTIONS[direction] * TILE_SIZE, 1.0 / ANIMATION_SPEED)
 		is_moving = true
 		await tween.finished
+
 		is_moving = false
+		if(position == Vector2(-120, -104)):
+			at_exit.emit()
 		if current_direction == "":
 			animated_sprite.stop()
 			animated_sprite.frame = 1
@@ -58,13 +64,14 @@ func play_sound():
 	await get_tree().create_timer(1).timeout
 
 func _process(delta):
-	if current_direction != "" and not is_moving:
-		move(current_direction)
-	if(current_direction != ""):
-			audio_cd -= 0.05
-			if(audio_cd < 0):
-				play_sound()
-				audio_cd = 1
-	else:
-		audio_cd = 0
+	if active:
+		if current_direction != "" and not is_moving:
+			move(current_direction)
+		if current_direction != "":
+				audio_cd -= 0.05
+				if audio_cd < 0:
+					play_sound()
+					audio_cd = 1
+		else:
+			audio_cd = 0
 

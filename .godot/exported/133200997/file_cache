@@ -1,1 +1,4 @@
-res://main_game.tscn::cc822891f209c87f7aef5e5fc211da48::1717721912::res://.godot/exported/133200997/export-52da0abab86e6d1a7311a08b23751124-main_game.scn
+res://scenes/BgMusic.tscn::e6a4112e3a4873ac9a99a72c4e34f409::1718229187::res://.godot/exported/133200997/export-2c747314d1b3f9f0ac8b2720756dcfe4-BgMusic.scn
+res://scenes/Box.tscn::c2eadfb53818300b9611b50a7de810a3::1718229187::res://.godot/exported/133200997/export-bf66f130fa952061a1a3a36d42bf9b37-Box.scn
+res://scenes/main_game.tscn::121307674c7cd8868eaa586484f32a38::1718229238::res://.godot/exported/133200997/export-3a689a07f84009fde038ac878f1ae44a-main_game.scn
+res://scenes/transition_screen.tscn::92ef4cbf91661724d0b9ef6910f0245b::1718229187::res://.godot/exported/133200997/export-d22afcb00b9ab379a08a9b07cc5bccdc-transition_screen.scn

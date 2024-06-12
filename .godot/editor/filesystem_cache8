@@ -1,22 +1,32 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1718163694
-Box.tscn::PackedScene::2713421651215294715::1718163694::0::1::::<><>::res://scripts/Box.gd<>uid://c2ckmg3i2v51l::::res://assets/box.png
-export_presets.cfg::TextFile::-1::1718141636::0::1::::<><>::
-main_game.tscn::PackedScene::3041317086229627851::1718163694::0::1::::<><>::uid://bgkcaas5y1va2::::res://assets/Untitled-1.png<>uid://do5nftj0tuy2w::::res://assets/Solaria Demo Tiles.png<>uid://dwd0cxlhroogl::::res://assets/light.png<>res://shaders/water.gdshader<>uid://y1v4rr2g1dgt::::res://assets/water.png<>res://scripts/MazeGenerator.gd<>res://scripts/Player.gd<>uid://cxih0rgusaqi8::::res://assets/walk 1 fast.wav<>res://shaders/vignette.gdshader
+::res://::1718230612
+export_presets.cfg::TextFile::-1::1718227557::0::1::::<><>::
 README.md::TextFile::-1::1718141636::0::1::::<><>::
-::res://assets/::1718164118
-04B_30__.TTF::FontFile::3305054676454433056::1718164118::1718164118::1::::<><>::
+::res://assets/::1718230793
 box.png::CompressedTexture2D::6672697859370769359::1718158324::1718158333::1::::<><>::
 icon.svg::CompressedTexture2D::5683955996166006401::1718141636::1718141758::1::::<><>::
+Inter-VariableFont_slnt,wght.ttf::FontFile::3472123150677464216::1718215880::1718215880::1::::<><>::
 light.png::CompressedTexture2D::8711132466156400559::1718141636::1718141636::1::::<><>::
 Solaria Demo Tiles.png::CompressedTexture2D::8204636457518021564::1718141636::1718141636::1::::<><>::
+Three Red Hearts - Go.ogg::AudioStreamOggVorbis::6579682488866859482::1718228574::1718228574::1::::<><>::
 Untitled-1.png::CompressedTexture2D::2828318986250086527::1718141636::1718141636::1::::<><>::
 walk 1 fast.wav::AudioStreamWAV::6404170359988973073::1718163079::1718163148::1::::<><>::
 water.png::CompressedTexture2D::1739533834184096699::1718141636::1718141636::1::::<><>::
-::res://scripts/::1718163646
+width_550.webp::CompressedTexture2D::8918870391589322269::1718230310::1718230310::1::::<><>::
+width_550_256.png::CompressedTexture2D::2935112670177963943::1718230793::1718230794::1::::<><>::
+::res://scenes/::1718230140
+BgMusic.tscn::PackedScene::8559557750833765877::1718229187::0::1::::<><>::uid://c00in6ewjt3lm::::res://assets/Three Red Hearts - Go.ogg
+Box.tscn::PackedScene::2713421651215294715::1718229187::0::1::::<><>::res://scripts/Box.gd<>uid://c2ckmg3i2v51l::::res://assets/box.png
+main_game.tscn::PackedScene::3041317086229627851::1718229238::0::1::::<><>::res://scripts/MainGame.gd<>uid://do5nftj0tuy2w::::res://assets/Solaria Demo Tiles.png<>res://shaders/water.gdshader<>uid://y1v4rr2g1dgt::::res://assets/water.png<>res://scripts/MazeGenerator2.gd<>res://scripts/Player.gd<>uid://bgkcaas5y1va2::::res://assets/Untitled-1.png<>uid://dwd0cxlhroogl::::res://assets/light.png<>uid://cxih0rgusaqi8::::res://assets/walk 1 fast.wav<>res://shaders/vignette.gdshader<>uid://bpp6mjlce4e77::::res://assets/Inter-VariableFont_slnt,wght.ttf
+transition_screen.tscn::PackedScene::8910300129014268133::1718229187::0::1::::<><>::res://scripts/transition_screen.gd
+::res://scripts/::1718229185
 Box.gd::GDScript::-1::1718160948::0::1::::<>Area2D<>::
-MazeGenerator.gd::GDScript::-1::1718161791::0::1::::<>TileMap<>::
-Player.gd::GDScript::-1::1718163646::0::1::::<>Area2D<>::
-::res://shaders/::1718163694
-vignette.gdshader::Shader::-1::1718163694::0::1::::<><>::
-water.gdshader::Shader::-1::1718163694::0::1::::<><>::
+MainGame.gd::GDScript::-1::1718228809::0::1::::<>Node2D<>::
+MazeGenerator2.gd::GDScript::-1::1718229185::0::1::::<>TileMap<>::
+MazeGenerator.gd::GDScript::-1::1718225202::0::1::::<>TileMap<>::
+Player.gd::GDScript::-1::1718223523::0::1::::<>Area2D<>::
+transition_screen.gd::GDScript::-1::1718224932::0::1::::<>CanvasLayer<>::
+Variables.gd::GDScript::-1::1718227051::0::1::::<>Node<>::
+::res://shaders/::1718230212
+vignette.gdshader::Shader::-1::1718230212::0::1::::<><>::
+water.gdshader::Shader::-1::1718230212::0::1::::<><>::

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt7kwvok2h67r"]
+
+[ext_resource type="AudioStream" uid="uid://c00in6ewjt3lm" path="res://assets/Three Red Hearts - Go.ogg" id="1_glnsy"]
+
+[node name="BgMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_glnsy")
+volume_db = -13.0
+autoplay = true
