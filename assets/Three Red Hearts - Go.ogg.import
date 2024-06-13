@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Three Red Hearts - Go.ogg-f34c91009b34ccef8ee
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -2,6 +2,11 @@ extends Area2D
 
 signal at_exit;
 
+# Onready variables
+@onready var ray_cast: RayCast2D = $RayCast2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
+
 # Constants
 const TILE_SIZE = 16
 const ANIMATION_SPEED = 6
@@ -12,14 +17,16 @@ const DIRECTIONS = {
 	"ui_down": Vector2.DOWN
 }
 
-# Onready variables
-@onready var ray_cast: RayCast2D = $RayCast2D
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
+# Held keys
+var moving = {
+	"ui_right": false,
+	"ui_left": false,
+	"ui_up": false,
+	"ui_down": false
+}
 
 # State variables
 var is_moving = false
-var current_direction = ""
 var audio_cd = 1;
 var active = false
 
@@ -28,50 +35,58 @@ func _ready():
 
 func _unhandled_input(event):
 	for direction in DIRECTIONS.keys():
-		if event.is_action_pressed(direction) and not is_moving:
-			start_moving(direction)
-		elif event.is_action_released(direction):
-			current_direction = ""
+		if event.is_action_pressed(direction):
+			moving[direction] = true
+		if event.is_action_released(direction):
+			moving[direction] = false
 			if !is_moving:
 				animated_sprite.stop()
 				animated_sprite.frame = 1
 
-func start_moving(direction):
-	animated_sprite.play(direction)
-	animated_sprite.flip_h = (direction == "ui_right")
-	animated_sprite.frame = 0
-	current_direction = direction
+func move():
+	var first = null
+	for key in moving:
+		if(moving[key]):
+			first = key
+			
+			#collision check
+			ray_cast.target_position = DIRECTIONS[key] * TILE_SIZE
+			ray_cast.force_raycast_update()
+			if ray_cast.is_colliding() or !active: continue
+			
+			animate(key)
+			
+			#animate moving forward
+			var tween = create_tween()
+			tween.tween_property(self, "position", position + DIRECTIONS[key] * TILE_SIZE, 1.0 / ANIMATION_SPEED)
+			is_moving = true
+			await tween.finished
 
-func move(direction):
-	ray_cast.target_position = DIRECTIONS[direction] * TILE_SIZE
-	ray_cast.force_raycast_update()
-	
-	if not ray_cast.is_colliding():
-		var tween = create_tween()
-		tween.tween_property(self, "position", position + DIRECTIONS[direction] * TILE_SIZE, 1.0 / ANIMATION_SPEED)
-		is_moving = true
-		await tween.finished
+			is_moving = false
+			if(position == Vector2(-120, -104)):
+				at_exit.emit()
+			if !moving[key]:
+				animated_sprite.stop()
+				animated_sprite.frame = 1
+			return
+	if first != null:
+		animate(first)
 
-		is_moving = false
-		if(position == Vector2(-120, -104)):
-			at_exit.emit()
-		if current_direction == "":
-			animated_sprite.stop()
-			animated_sprite.frame = 1
 
-func play_sound():
-	audio.play()
-	await get_tree().create_timer(1).timeout
+func animate(direction):
+	if !animated_sprite.is_playing() or animated_sprite.animation != direction:
+		animated_sprite.play(direction)
+		animated_sprite.flip_h = (direction == "ui_right")
+		animated_sprite.frame = 0
 
 func _process(delta):
-	if active:
-		if current_direction != "" and not is_moving:
-			move(current_direction)
-		if current_direction != "":
-				audio_cd -= 0.05
-				if audio_cd < 0:
-					play_sound()
-					audio_cd = 1
-		else:
-			audio_cd = 0
-
+	if moving.values().has(true):
+		if not is_moving:
+			move()
+		audio_cd -= 0.05
+		if audio_cd < 0:
+			if is_moving:
+				audio.play()
+			audio_cd = 1.0
+	else:
+		audio_cd = 0

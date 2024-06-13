@@ -1,2 +1,10 @@
+res://scenes/main_game.tscn
 res://shaders/water.gdshader
 res://shaders/vignette.gdshader
+res://scenes/Box.tscn
+res://scenes/transition_screen.tscn
+res://scenes/BgMusic.tscn
+res://scripts/MainGame.gd
+res://scripts/Player.gd
+res://scripts/MazeGenerator.gd
+res://scripts/MazeGenerator2.gd

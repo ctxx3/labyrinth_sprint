@@ -6,7 +6,7 @@ const height = 13
 var current_offset_y = 0.0
 
 var boxes = []
-var animatedTile = preload("res://Box.tscn")
+var animatedTile = preload("res://scenes/Box.tscn")
 
 func build_maze():
 	for x in range(boxes.size()):

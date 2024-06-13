@@ -31,13 +31,14 @@ func _unhandled_input(event):
 		if(game_ended):
 			TransitionScreen.transition()
 			await TransitionScreen.on_transition_finished
-			get_tree().reload_current_scene()
+			if get_tree() != null:
+				get_tree().reload_current_scene()
 		
 		elif not game_started:
 			game_started = true
 			var tween = create_tween()
 			tween.tween_property(startText, "modulate", Color8(255,255,255,0), 1.0)
-			var maze = await tileset.build_maze()
+			await tileset.build_maze()
 			startText.visible = false
 			player.active = true
 			start_time = Time.get_ticks_msec()
@@ -46,7 +47,8 @@ func _unhandled_input(event):
 	if event.is_action_released("restart"):
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
-		get_tree().reload_current_scene()
+		if get_tree() != null:
+			get_tree().reload_current_scene()
 
 
 func _on_player_at_exit():

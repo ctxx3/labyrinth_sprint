@@ -14,16 +14,21 @@ var boxes = []
 var animatedTile = preload("res://scenes/Box.tscn")
 
 func build_maze():
+	#cleanup all boxes
 	for x in range(boxes.size()):
 		var box = boxes.pop_back()
 		box.queue_free()
+		
+	#create a maze
 	var maze = create_maze()
 	
+	#create new boxes
 	for x in range(width):
-		var to_wait = 0
 		for y in range(height-1, -1, -1):
 			if(maze[y][x] == 1):
 				spawn_box((x-12)*16, (y-5)*16, x+y)
+				
+	#wait for animation to end
 	await get_tree().create_timer(4).timeout
 	return true
 
@@ -39,22 +44,27 @@ func spawn_box(x,y, id):
 
 
 func create_maze():
+	var template_row = []
+	template_row.resize(width)
+	template_row.fill(1)
+	
 	while true:
+		# create a block of wall
 		var maze = []
 		for y in range(height):
-			maze.append([])
-			for x in range(width):
-				maze[y].append(1)
+			maze.append(template_row.duplicate())
 		
+		# generate passage
 		carve_passage(maze, start)
 		maze[start.y][start.x] = 0
 		maze[end.y][end.x] = 0
 		
+		# check if possible and within parameters
 		var reachable = is_reachable(maze, start, end)
 		if min_path_length <= reachable and reachable <= max_path_length:
 			return maze
 	
-
+# Breadth-first search (BFS) algorithm
 func is_reachable(maze, start, end):
 	var queue = [start]
 	var visited = {start: 0}
@@ -67,30 +77,29 @@ func is_reachable(maze, start, end):
 			
 		for offset in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.UP]:
 			var neighbour = node + offset
+			
+			#if in bounds, not a wall and hasn't been checked already
 			if(in_bounds(neighbour) and maze[neighbour.y][neighbour.x] == 0 and neighbour not in visited):
 				queue.append(neighbour)
 				visited[neighbour] = steps + 1
 	return -1
 
-
-func in_bounds(pos):
-	return 0 <= pos.x and pos.x < width and 0 <= pos.y and pos.y < height
-
+# Depth-first search (DFS) algorithm
 func carve_passage(maze, current, last_direction=null):
 	var directions = [Vector2i.UP, Vector2i.LEFT, Vector2i.DOWN, Vector2i.RIGHT]
 	
+	# make last direction less likely to appear again
 	if last_direction != null and randf() >= continuation_probability:
 		directions.remove_at(last_direction)
 	directions.shuffle()
 	
-	var i = 0
-	for direction in directions:
-		var neighbour = current + (direction * 2)
+	for i in range(directions.size()):
+		var neighbour = current + (directions[i] * 2)
 		if in_bounds(neighbour) and maze[neighbour.y][neighbour.x] == 1:
-			var sum = current + direction
+			var sum = current + directions[i]
 			maze[sum.y][sum.x] = 0
 			maze[neighbour.y][neighbour.x] = 0
 			carve_passage(maze, neighbour, i)
-		i+=1
-	
-	
+
+func in_bounds(pos):
+	return 0 <= pos.x and pos.x < width and 0 <= pos.y and pos.y < height
